@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sri Manasa Y — Marketing Strategist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,600&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+:root{--cr:#8B0000;--cr2:#B01A1A;--ivory:#F7F2EA;--cream:#EDE5D8;--ink:#1A1108;--gray:#7A6E65;--gold:#C49A38}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ivory);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.3rem 5vw;background:rgba(247,242,234,0.93);backdrop-filter:blur(12px);border-bottom:1px solid rgba(139,0,0,0.08)}
+.nav-logo{font-family:'Great Vibes',cursive;font-size:1.9rem;color:var(--cr)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink);text-decoration:none;opacity:0.6;transition:all 0.2s}
+.nav-links a:hover{opacity:1;color:var(--cr)}
+
+/* HERO */
+#hero{min-height:100vh;display:grid;grid-template-columns:55% 45%;align-items:center}
+.hero-left{padding:9rem 4vw 6rem 8vw}
+.hero-eyebrow{font-size:0.65rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--cr);margin-bottom:1.4rem;opacity:0;animation:fadeUp 0.7s 0.3s both}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(3.2rem,5vw,5.2rem);font-weight:900;line-height:1.0;color:var(--ink);opacity:0;animation:fadeUp 0.8s 0.5s both}
+.hero-name em{font-style:italic;color:var(--cr)}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,1.8vw,1.6rem);font-style:italic;color:var(--gray);margin:1.4rem 0 2.5rem;line-height:1.6;opacity:0;animation:fadeUp 0.8s 0.7s both}
+.hero-badges{display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:2.8rem;opacity:0;animation:fadeUp 0.8s 0.9s both}
+.badge{padding:0.4rem 1rem;border:1.5px solid rgba(139,0,0,0.25);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--cr)}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp 0.8s 1.1s both}
+.btn-p{background:var(--cr);color:#fff;padding:0.85rem 2rem;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;transition:all 0.3s}
+.btn-p:hover{background:var(--cr2);transform:translateY(-2px)}
+.btn-o{background:transparent;color:var(--cr);padding:0.85rem 2rem;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;border:1.5px solid var(--cr);transition:all 0.3s}
+.btn-o:hover{background:var(--cr);color:#fff}
+.hero-right{height:100vh;background:var(--cr);clip-path:polygon(10% 0,100% 0,100% 100%,0 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.hero-right::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:26px 26px}
+.hero-right-inner{position:relative;z-index:2;padding:2rem 2rem 2rem 6rem;width:100%}
+.hero-script{font-family:'Great Vibes',cursive;font-size:clamp(2rem,3.5vw,3.5rem);color:#fff;opacity:0.9;line-height:1.5;animation:fadeIn 1s 1.3s both;margin-bottom:2.5rem}
+.stat-bars{display:flex;flex-direction:column;gap:1.2rem;animation:fadeIn 1s 1.5s both}
+.sbar{display:flex;align-items:center;gap:0.8rem}
+.sbar-label{font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);width:80px;text-align:right;flex-shrink:0}
+.sbar-track{flex:1;height:2px;background:rgba(255,255,255,0.15);border-radius:2px;max-width:120px}
+.sbar-fill{height:100%;background:#fff;border-radius:2px;animation:barGrow 1.2s ease both}
+.sbar-val{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#fff;width:45px;flex-shrink:0}
+
+/* MARQUEE */
+.marquee-strip{background:var(--ink);padding:0.85rem 0;overflow:hidden;white-space:nowrap}
+.marquee-inner{display:inline-flex;animation:marquee 22s linear infinite}
+.mitem{font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(247,242,234,0.4);padding:0 2.5rem}
+.mitem span{color:var(--gold);margin-right:2.5rem}
+
+/* SECTIONS */
+section{padding:6rem 8vw}
+.section-label{font-size:0.62rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--cr);margin-bottom:0.8rem;display:flex;align-items:center;gap:0.8rem}
+.section-label::after{content:'';flex:0 0 40px;height:1px;background:var(--cr);opacity:0.35}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:700;line-height:1.15;color:var(--ink)}
+.section-title em{font-style:italic;color:var(--cr)}
+
+/* ABOUT */
+#about{background:var(--ink);color:var(--ivory)}
+#about .section-label{color:var(--gold)}
+#about .section-label::after{background:var(--gold)}
+#about .section-title{color:var(--ivory)}
+#about .section-title em{color:var(--gold)}
+.about-layout{display:grid;grid-template-columns:1fr 2fr;gap:5rem;margin-top:4rem;align-items:start}
+.about-intro{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;font-style:italic;line-height:1.9;color:rgba(247,242,234,0.7)}
+.about-intro strong{color:var(--gold);font-style:normal;font-weight:600}
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.pillar{padding:2rem;border:1px solid rgba(247,242,234,0.07);transition:background 0.3s}
+.pillar:hover{background:rgba(139,0,0,0.2)}
+.pillar-num{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:rgba(139,0,0,0.4);line-height:1;margin-bottom:0.5rem}
+.pillar-title{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem}
+.pillar-text{font-size:0.82rem;line-height:1.7;color:rgba(247,242,234,0.5)}
+
+/* RESULTS */
+#results{background:var(--cr);padding:5rem 8vw}
+.results-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:3.5rem}
+.results-head .section-title{color:#fff}
+.results-sub{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:rgba(255,255,255,0.6);max-width:240px;line-height:1.6}
+.metrics-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,255,255,0.1)}
+.metric-box{background:var(--cr);padding:2rem 1.2rem;text-align:center;transition:background 0.3s;position:relative}
+.metric-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:rgba(255,255,255,0);transition:background 0.3s}
+.metric-box:hover{background:rgba(255,255,255,0.06)}
+.metric-box:hover::before{background:rgba(255,255,255,0.4)}
+.metric-num{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,2.5vw,2.6rem);font-weight:900;color:#fff;line-height:1}
+.metric-num sup{font-size:0.9rem;vertical-align:super}
+.metric-label{font-size:0.62rem;letter-spacing:0.08em;color:rgba(255,255,255,0.55);margin-top:0.6rem;line-height:1.5}
+
+/* EXPERIENCE */
+#experience{background:var(--ivory)}
+.timeline{margin-top:4rem;position:relative}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:0;width:1px;background:linear-gradient(to bottom,var(--cr),rgba(139,0,0,0.05))}
+.tl-item{display:grid;grid-template-columns:200px 1fr;padding-left:30px;margin-bottom:3rem;position:relative}
+.tl-item::before{content:'';position:absolute;left:-4px;top:8px;width:9px;height:9px;border-radius:50%;background:var(--cr);box-shadow:0 0 0 3px var(--ivory),0 0 0 5px rgba(139,0,0,0.2)}
+.tl-meta{padding-right:2rem;padding-top:2px}
+.tl-year{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--cr)}
+.tl-co{font-size:0.7rem;color:var(--gray);margin-top:0.3rem;line-height:1.5}
+.tl-co a{color:var(--cr);text-decoration:none;opacity:0.8}
+.tl-co a:hover{opacity:1;text-decoration:underline}
+.tl-role{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:0.6rem}
+.tl-desc{font-size:0.84rem;color:var(--gray);line-height:1.7;max-width:560px}
+.tl-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.8rem}
+.tl-tag{padding:0.25rem 0.7rem;background:rgba(139,0,0,0.07);color:var(--cr);font-size:0.63rem;letter-spacing:0.08em;border-radius:2px}
+.tl-win{display:inline-block;margin-top:0.8rem;padding:0.3rem 0.9rem;background:var(--cr);color:#fff;font-size:0.63rem;letter-spacing:0.12em;text-transform:uppercase}
+
+/* PROJECTS */
+#projects{background:var(--cream)}
+.projects-intro{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:var(--gray);max-width:480px;margin-top:0.5rem;line-height:1.7}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.project-card{background:var(--ivory);overflow:hidden;transition:transform 0.4s,box-shadow 0.4s}
+.project-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(26,17,8,0.12)}
+.pc-head{background:var(--cr);padding:1.8rem;position:relative;min-height:115px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.pc-head::before{content:'';position:absolute;top:-25px;right:-25px;width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,0.04)}
+.pc-cat{font-size:0.57rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.4rem}
+.pc-name{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#fff;line-height:1.2}
+.pc-ig{display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.6rem;color:rgba(255,255,255,0.6);font-size:0.6rem;letter-spacing:0.08em;text-decoration:none;transition:color 0.2s}
+.pc-ig:hover{color:#fff}
+.pc-ig svg{width:11px;height:11px;fill:currentColor;flex-shrink:0}
+.pc-body{padding:1.5rem}
+.pc-win{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1rem}
+.win-pill{padding:0.28rem 0.7rem;background:rgba(139,0,0,0.08);color:var(--cr);font-size:0.63rem;font-weight:500;border-radius:20px;border:1px solid rgba(139,0,0,0.12)}
+.pc-line{font-size:0.81rem;color:var(--gray);line-height:1.65}
+.pc-line strong{color:var(--ink);font-weight:500}
+
+/* SKILLS */
+#skills{background:var(--ink)}
+#skills .section-label{color:var(--gold)}
+#skills .section-label::after{background:var(--gold)}
+#skills .section-title{color:var(--ivory)}
+#skills .section-title em{color:var(--gold)}
+.skills-visual{margin-top:4rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.sg-title{font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;padding-bottom:0.7rem;border-bottom:1px solid rgba(247,242,234,0.08)}
+.skill-row{display:flex;align-items:center;gap:1rem;margin-bottom:1.1rem}
+.skill-name{font-size:0.76rem;color:rgba(247,242,234,0.65);width:145px;flex-shrink:0}
+.skill-track{flex:1;height:2px;background:rgba(247,242,234,0.1);border-radius:1px;position:relative}
+.skill-fill{height:100%;background:linear-gradient(to right,var(--cr),var(--cr2));border-radius:1px;animation:barGrow 1.4s ease both}
+.skill-dot{width:7px;height:7px;border-radius:50%;background:var(--cr2);position:absolute;right:0;top:-2.5px}
+.skills-tags{display:flex;flex-wrap:wrap;gap:0.6rem;align-content:flex-start}
+.sk-tag{padding:0.42rem 0.9rem;font-size:0.7rem;color:rgba(247,242,234,0.55);border:1px solid rgba(247,242,234,0.1);transition:all 0.2s;cursor:default}
+.sk-tag:hover{background:rgba(139,0,0,0.4);color:#fff;border-color:var(--cr)}
+
+/* AWARDS */
+#awards{background:var(--cream)}
+.awards-visual{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(139,0,0,0.1);margin-top:3.5rem}
+.award-box{background:var(--cream);padding:2rem 1.8rem;transition:background 0.3s}
+.award-box:hover{background:var(--ivory)}
+.aw-icon{font-size:1.5rem;margin-bottom:0.8rem}
+.aw-title{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--ink);line-height:1.3;margin-bottom:0.3rem}
+.aw-org{font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--cr);margin-bottom:0.4rem}
+.aw-desc{font-size:0.77rem;color:var(--gray);line-height:1.5}
+
+/* EDUCATION */
+#education{background:var(--ivory)}
+.edu-visual{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3.5rem}
+.edu-card{padding:1.8rem;border:1px solid rgba(139,0,0,0.12);margin-bottom:1.5rem;position:relative;transition:border-color 0.3s}
+.edu-card:hover{border-color:var(--cr)}
+.edu-card::before{content:'';position:absolute;top:0;left:0;width:0;height:2px;background:var(--cr);transition:width 0.4s}
+.edu-card:hover::before{width:100%}
+.edu-degree{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--ink);margin-bottom:0.3rem}
+.edu-school{color:var(--cr);font-size:0.8rem}
+.edu-year{font-size:0.63rem;letter-spacing:0.12em;color:var(--gray);margin-top:0.2rem}
+.cert-row{display:flex;align-items:flex-start;gap:0.8rem;margin-bottom:0.8rem}
+.cert-dot{width:6px;height:6px;border-radius:50%;background:var(--cr);flex-shrink:0;margin-top:4px}
+.cert-name{font-size:0.8rem;color:var(--gray);line-height:1.4}
+
+/* CONTACT */
+#contact{background:var(--ink);color:#fff;text-align:center;padding:8rem 8vw;position:relative;overflow:hidden}
+#contact::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:26px 26px}
+#contact .section-label{color:rgba(255,255,255,0.35);justify-content:center}
+#contact .section-label::after,#contact .section-label::before{content:'';flex:0 0 50px;height:1px;background:rgba(255,255,255,0.12)}
+#contact .section-title{color:#fff}
+.contact-script{font-family:'Great Vibes',cursive;font-size:clamp(2rem,3.5vw,3.5rem);color:var(--gold);margin:1rem 0 1.5rem}
+.contact-tagline{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:rgba(255,255,255,0.55);max-width:430px;margin:0 auto 3rem;line-height:1.7}
+.contact-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap}
+.contact-link{display:flex;align-items:center;gap:0.6rem;color:#fff;text-decoration:none;padding:0.9rem 1.8rem;border:1px solid rgba(255,255,255,0.18);font-size:0.74rem;letter-spacing:0.1em;transition:all 0.3s}
+.contact-link:hover{background:rgba(139,0,0,0.5);border-color:var(--cr)}
+
+footer{background:#0e0b06;color:rgba(247,242,234,0.2);text-align:center;padding:1.5rem;font-size:0.63rem;letter-spacing:0.12em}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity 0.7s,transform 0.7s}
+.reveal.visible{opacity:1;transform:none}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes barGrow{from{width:0}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  #hero{grid-template-columns:1fr}
+  .hero-right{height:55vh;clip-path:none}
+  .hero-left{padding:8rem 6vw 4rem}
+  .about-layout{grid-template-columns:1fr}
+  .metrics-grid{grid-template-columns:repeat(3,1fr)}
+  .projects-grid{grid-template-columns:1fr 1fr}
+  .skills-visual{grid-template-columns:1fr}
+  .awards-visual{grid-template-columns:1fr 1fr}
+  .edu-visual{grid-template-columns:1fr}
+  .timeline::before{left:0}
+  .tl-item{grid-template-columns:1fr;padding-left:20px}
+  .tl-meta{margin-bottom:0.5rem}
+  .pillars{grid-template-columns:1fr 1fr}
+}
+@media(max-width:580px){
+  .metrics-grid,.projects-grid,.awards-visual{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Sri Manasa</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Marketing · Strategy · Growth · Storytelling</p>
+    <h1 class="hero-name">Sri<br><em>Manasa</em><br>Yellapragada</h1>
+    <p class="hero-sub">I make people feel something<br>— and then buy something.</p>
+    <div class="hero-badges">
+      <span class="badge">Brand Marketing</span>
+      <span class="badge">GTM Strategy</span>
+      <span class="badge">Lifecycle & CRM</span>
+      <span class="badge">Content & Social</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-p">See My Work</a>
+      <a href="mailto:ysrimanasa02@gmail.com" class="btn-o">Let's Talk</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-inner">
+      <div class="hero-script">4 years.<br>Many brands.<br>Zero boring campaigns.</div>
+      <div class="stat-bars">
+        <div class="sbar">
+          <div class="sbar-label">CLV Lift</div>
+          <div class="sbar-track"><div class="sbar-fill" style="width:85%;animation-delay:1.6s"></div></div>
+          <div class="sbar-val">+25%</div>
+        </div>
+        <div class="sbar">
+          <div class="sbar-label">Lead Gen</div>
+          <div class="sbar-track"><div class="sbar-fill" style="width:72%;animation-delay:1.8s"></div></div>
+          <div class="sbar-val">+18%</div>
+        </div>
+        <div class="sbar">
+          <div class="sbar-label">Footfall</div>
+          <div class="sbar-track"><div class="sbar-fill" style="width:100%;animation-delay:2.0s"></div></div>
+          <div class="sbar-val">+40%</div>
+        </div>
+        <div class="sbar">
+          <div class="sbar-label">Campaigns</div>
+          <div class="sbar-track"><div class="sbar-fill" style="width:75%;animation-delay:2.2s"></div></div>
+          <div class="sbar-val">+30%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span class="mitem"><span>✦</span>Brand Strategy</span><span class="mitem"><span>✦</span>GTM Planning</span><span class="mitem"><span>✦</span>Lifecycle Marketing</span><span class="mitem"><span>✦</span>Consumer Research</span><span class="mitem"><span>✦</span>CRM Campaigns</span><span class="mitem"><span>✦</span>Cultural Storytelling</span><span class="mitem"><span>✦</span>Performance Marketing</span><span class="mitem"><span>✦</span>A/B Testing</span><span class="mitem"><span>✦</span>Brand Strategy</span><span class="mitem"><span>✦</span>GTM Planning</span><span class="mitem"><span>✦</span>Lifecycle Marketing</span><span class="mitem"><span>✦</span>Consumer Research</span><span class="mitem"><span>✦</span>CRM Campaigns</span><span class="mitem"><span>✦</span>Cultural Storytelling</span><span class="mitem"><span>✦</span>Performance Marketing</span><span class="mitem"><span>✦</span>A/B Testing</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">The person behind the strategy</div>
+  <h2 class="section-title">Not just a marketer.<br><em>A systems builder.</em></h2>
+  <div class="about-layout reveal">
+    <p class="about-intro">I've conducted <strong>100+ consumer interviews</strong> because I genuinely believe the best brief comes from the consumer, not the boardroom. Data is my compass. <strong>Emotion is my north star.</strong></p>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <div class="pillar-title">Insight First</div>
+        <div class="pillar-text">Every strategy starts with a real consumer truth — not a hunch dressed up as a hypothesis.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <div class="pillar-title">Full-Funnel</div>
+        <div class="pillar-text">Awareness to retention — I've owned every stage and know how they talk to each other.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <div class="pillar-title">Culturally Wired</div>
+        <div class="pillar-text">I build campaigns around occasions, emotions & cultural moments — not product features.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">04</div>
+        <div class="pillar-title">Measurably Good</div>
+        <div class="pillar-text">Pretty campaigns that don't perform are expensive mood boards. I track everything.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS INFOGRAPHIC -->
+<section id="results">
+  <div class="results-head reveal">
+    <div>
+      <div class="section-label" style="color:rgba(255,255,255,0.5)">Impact by numbers</div>
+      <h2 class="section-title" style="color:#fff">The receipts.</h2>
+    </div>
+    <p class="results-sub">"I think it went well" isn't a KPI. Here's what actually happened.</p>
+  </div>
+  <div class="metrics-grid reveal">
+    <div class="metric-box">
+      <div class="metric-num"><sup>+</sup>25%</div>
+      <div class="metric-label">Customer Lifetime Value<br>via segmentation & cross-sell</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-num"><sup>+</sup>40%</div>
+      <div class="metric-label">Footfall & awareness boost<br>from multi-channel campaigns</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-num"><sup>+</sup>18%</div>
+      <div class="metric-label">Lead generation improvement<br>via optimised targeting</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-num">100<sup>+</sup></div>
+      <div class="metric-label">Consumer & trade interviews<br>across 5+ industries</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-num"><sup>+</sup>30%</div>
+      <div class="metric-label">Campaign effectiveness gain<br>with AOP-aligned planning</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label reveal">Career Timeline</div>
+  <h2 class="section-title reveal">Where I've been<br><em>(and what I fixed along the way)</em></h2>
+  <div class="timeline">
+
+    <div class="tl-item reveal">
+      <div class="tl-meta">
+        <div class="tl-year">2024 – Now</div>
+        <div class="tl-co">Bridgegap Management<br>Consultants</div>
+      </div>
+      <div>
+        <div class="tl-role">Consultant — Marketing & Strategy</div>
+        <div class="tl-desc">Led strategy across 5+ brand engagements in FMCG, retail & services. Turned 100+ consumer conversations into GTM plans and multi-channel campaigns that actually moved the needle.</div>
+        <div class="tl-tags"><span class="tl-tag">GTM Strategy</span><span class="tl-tag">Consumer Research</span><span class="tl-tag">Multi-channel</span><span class="tl-tag">Dashboards</span></div>
+        <div class="tl-win">🏆 Consumer Champion Award</div>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-meta">
+        <div class="tl-year">Jul–Dec 2024</div>
+        <div class="tl-co"><a href="https://www.instagram.com/suta_bombay/" target="_blank">@suta_bombay ↗</a><br>821K followers</div>
+      </div>
+      <div>
+        <div class="tl-role">Manager — Retention Marketing</div>
+        <div class="tl-desc">Built the full lifecycle engine for one of India's most-loved handloom brands — email, WhatsApp, SMS, push. Introduced occasion-based segmentation because saree-buying is never just shopping, it's an emotion.</div>
+        <div class="tl-tags"><span class="tl-tag">CRM</span><span class="tl-tag">Lifecycle</span><span class="tl-tag">A/B Testing</span><span class="tl-tag">Segmentation</span><span class="tl-tag">+25% CLV</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-meta">
+        <div class="tl-year">Feb–Jun 2024</div>
+        <div class="tl-co">Aragen Life Sciences</div>
+      </div>
+      <div>
+        <div class="tl-role">Digital Marketing Associate</div>
+        <div class="tl-desc">Proved that even in pharma, smart targeting beats spray-and-pray. Led SEO, content & performance campaigns — hit 10% conversion rate while benchmark-chasers were still setting up their spreadsheets.</div>
+        <div class="tl-tags"><span class="tl-tag">Performance Marketing</span><span class="tl-tag">SEO</span><span class="tl-tag">Lead Gen</span><span class="tl-tag">+18% Leads</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-meta">
+        <div class="tl-year">2019–2022</div>
+        <div class="tl-co">Dias Works</div>
+      </div>
+      <div>
+        <div class="tl-role">Content & Social Media Manager</div>
+        <div class="tl-desc">Where it all started. Built multi-platform campaigns from scratch, grew organic traffic, and cut content turnaround time by 30% — because great ideas shouldn't live and die in a Google Doc forever.</div>
+        <div class="tl-tags"><span class="tl-tag">Content Strategy</span><span class="tl-tag">Social Media</span><span class="tl-tag">SEO</span><span class="tl-tag">+20% Engagement</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label reveal">Selected Work</div>
+  <h2 class="section-title reveal">Brands I've helped<br><em>say the right thing</em></h2>
+  <p class="projects-intro reveal">A few stories from the portfolio — where strategy met execution and both actually showed up.</p>
+  <div class="projects-grid">
+
+    <div class="project-card reveal">
+      <div class="pc-head">
+        <div class="pc-cat">D2C Fashion · Lifecycle · CRM</div>
+        <div class="pc-name">Suta</div>
+        <a href="https://www.instagram.com/suta_bombay/" target="_blank" class="pc-ig">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          @suta_bombay
+        </a>
+      </div>
+      <div class="pc-body">
+        <div class="pc-win"><span class="win-pill">+15–25% CLV</span><span class="win-pill">+20% Engagement</span></div>
+        <div class="pc-line">Built lifecycle journeys for an 821K-follower saree brand — tying campaigns to <strong>festivals, gifting & personal milestones</strong> instead of just product drops. Retention that feels like a hug, not a push notification.</div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="pc-head">
+        <div class="pc-cat">Silver Jewellery · Brand · Social</div>
+        <div class="pc-name">Eshira Silver</div>
+        <a href="https://www.instagram.com/eshirasilverkjewellery/" target="_blank" class="pc-ig">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          @eshirasilverkjewellery
+        </a>
+      </div>
+      <div class="pc-body">
+        <div class="pc-win"><span class="win-pill">4.9K Views</span><span class="win-pill">1.3K Likes</span></div>
+        <div class="pc-line">Repositioned jewellery from <strong>"product" to "ritual."</strong> Wedding season storytelling in Telugu, Hindi & English — because good jewellery content should make you feel something, not just want something.</div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="pc-head">
+        <div class="pc-cat">Entertainment · Hospitality · Fan Culture</div>
+        <div class="pc-name">Rajinikanth 24/7</div>
+        <a href="https://www.instagram.com/rajinikanth24bar7/" target="_blank" class="pc-ig">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          @rajinikanth24bar7
+        </a>
+      </div>
+      <div class="pc-body">
+        <div class="pc-win"><span class="win-pill">Improved Engagement</span><span class="win-pill">Strong Brand Recall</span></div>
+        <div class="pc-line">Built a <strong>personality-led brand voice</strong> for a Rajinikanth-themed bar. Iconic dialogues, pop culture hooks, fan nostalgia. Proof that great social strategy feels effortless — even when it's really not.</div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="pc-head">
+        <div class="pc-cat">Building Products · B2B & B2C · GTM</div>
+        <div class="pc-name">Hörmann India</div>
+        <a href="https://www.instagram.com/shakti_hormann/" target="_blank" class="pc-ig">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          @shakti_hormann
+        </a>
+      </div>
+      <div class="pc-body">
+        <div class="pc-win"><span class="win-pill">Brand Consistency</span><span class="win-pill">B2B2C Strategy</span></div>
+        <div class="pc-line">Making <strong>doors genuinely exciting</strong> — yes, really. Bridged German engineering precision with Indian consumer sensibility. A masterclass in B2B2C storytelling for a category most people open and immediately forget.</div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="pc-head">
+        <div class="pc-cat">FMCG · Edible Oils · Mass Market</div>
+        <div class="pc-name">Sunpure</div>
+        <a href="https://www.instagram.com/sunpure_official/" target="_blank" class="pc-ig">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          @sunpure_official
+        </a>
+      </div>
+      <div class="pc-body">
+        <div class="pc-win"><span class="win-pill">GTM Strategy</span><span class="win-pill">Consumer Insight</span></div>
+        <div class="pc-line">India's first chemically-free sunflower oil — 30K+ followers. Crafted <strong>messaging strategy</strong> where purity was positioned as an emotional promise, not just a label claim. Oil, but make it meaningful.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Capabilities</div>
+  <h2 class="section-title">What's in<br><em>the toolkit</em></h2>
+  <div class="skills-visual reveal">
+    <div>
+      <div class="sg-title">Core Marketing Strengths</div>
+      <div class="skill-row">
+        <div class="skill-name">Brand Strategy</div>
+        <div class="skill-track"><div class="skill-fill" style="width:95%;animation-delay:0.2s"></div><div class="skill-dot"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">GTM Planning</div>
+        <div class="skill-track"><div class="skill-fill" style="width:92%;animation-delay:0.35s"></div><div class="skill-dot"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">Lifecycle & CRM</div>
+        <div class="skill-track"><div class="skill-fill" style="width:90%;animation-delay:0.5s"></div><div class="skill-dot"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">Consumer Research</div>
+        <div class="skill-track"><div class="skill-fill" style="width:95%;animation-delay:0.65s"></div><div class="skill-dot"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">Content Strategy</div>
+        <div class="skill-track"><div class="skill-fill" style="width:88%;animation-delay:0.8s"></div><div class="skill-dot"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">Performance Mktg</div>
+        <div class="skill-track"><div class="skill-fill" style="width:82%;animation-delay:0.95s"></div><div class="skill-dot"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">A/B Testing</div>
+        <div class="skill-track"><div class="skill-fill" style="width:87%;animation-delay:1.1s"></div><div class="skill-dot"></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="sg-title">Channels, Tools & Extras</div>
+      <div class="skills-tags">
+        <span class="sk-tag">Email Marketing</span>
+        <span class="sk-tag">WhatsApp Campaigns</span>
+        <span class="sk-tag">SMS & Push</span>
+        <span class="sk-tag">Instagram Strategy</span>
+        <span class="sk-tag">SEO</span>
+        <span class="sk-tag">Campaign Dashboards</span>
+        <span class="sk-tag">Customer Segmentation</span>
+        <span class="sk-tag">Conversion Optimisation</span>
+        <span class="sk-tag">Cultural Storytelling</span>
+        <span class="sk-tag">Occasion-led Marketing</span>
+        <span class="sk-tag">Trade Marketing</span>
+        <span class="sk-tag">Hyperlocal Growth</span>
+        <span class="sk-tag">AOP Planning</span>
+        <span class="sk-tag">Advanced Excel</span>
+        <span class="sk-tag">Neuromarketing</span>
+        <span class="sk-tag">English · Hindi · Telugu</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards">
+  <div class="section-label reveal">Recognition</div>
+  <h2 class="section-title reveal">Nice things people<br><em>said officially</em></h2>
+  <div class="awards-visual reveal">
+    <div class="award-box">
+      <div class="aw-icon">🏆</div>
+      <div class="aw-title">Consumer Champion Award</div>
+      <div class="aw-org">Bridgegap Management Consultants</div>
+      <div class="aw-desc">Highest research output & most actionable consumer insights — across all consultants.</div>
+    </div>
+    <div class="award-box">
+      <div class="aw-icon">📄</div>
+      <div class="aw-title">4th Best Paper — Resonance 2022</div>
+      <div class="aw-org">Woxsen University</div>
+      <div class="aw-desc">Research on post-COVID consumer behaviour — what shifted, what didn't, and what brands got wrong.</div>
+    </div>
+    <div class="award-box">
+      <div class="aw-icon">🎓</div>
+      <div class="aw-title">Honourable Mention</div>
+      <div class="aw-org">IIM Tiruchirappalli</div>
+      <div class="aw-desc">Neuromarketing & consumer decision-making research — i.e., the science of why people buy weird things.</div>
+    </div>
+    <div class="award-box">
+      <div class="aw-icon">🎤</div>
+      <div class="aw-title">Conference Presenter</div>
+      <div class="aw-org">IIM Jammu</div>
+      <div class="aw-desc">Selected to present research on crisis leadership in the digital age. Survived the Q&A.</div>
+    </div>
+    <div class="award-box">
+      <div class="aw-icon">📰</div>
+      <div class="aw-title">Published Research Paper</div>
+      <div class="aw-org">Academic Publication, 2022</div>
+      <div class="aw-desc">Unemployment trends during COVID-19 — because understanding macro shifts makes better marketers.</div>
+    </div>
+    <div class="award-box">
+      <div class="aw-icon">⭐</div>
+      <div class="aw-title">Best Intern</div>
+      <div class="aw-org">The Chocolate Room</div>
+      <div class="aw-desc">Launched a student ambassador program. Came for the internship, stayed for the chocolate. Delivered on both.</div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label reveal">Credentials</div>
+  <h2 class="section-title reveal">The formal bit<br><em>(it's a good list)</em></h2>
+  <div class="edu-visual reveal">
+    <div>
+      <div class="edu-card">
+        <div class="edu-degree">PGDM — Marketing & Finance</div>
+        <div class="edu-school">Administrative Staff College of India</div>
+        <div class="edu-year">2022 – 2024 · Hyderabad</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">B.Voc — Retail Management & IT</div>
+        <div class="edu-school">St. Francis College</div>
+        <div class="edu-year">2019 – 2022 · Hyderabad</div>
+      </div>
+    </div>
+    <div>
+      <div class="sg-title" style="color:var(--cr);border-color:rgba(139,0,0,0.12);font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;padding-bottom:0.7rem;border-bottom:1px solid rgba(139,0,0,0.12);margin-bottom:1.4rem">Certifications</div>
+      <div class="cert-row"><div class="cert-dot"></div><div class="cert-name">Digital Marketing Professional — <strong>Google</strong></div></div>
+      <div class="cert-row"><div class="cert-dot"></div><div class="cert-name">Advanced Excel Analytics — <strong>UCL</strong></div></div>
+      <div class="cert-row"><div class="cert-dot"></div><div class="cert-name">McKinsey Forward Program — <strong>McKinsey & Co.</strong></div></div>
+      <div class="cert-row"><div class="cert-dot" style="background:var(--gold)"></div><div class="cert-name">Applying AI in Research — <strong>Harvard</strong> <em style="font-size:0.7rem;color:var(--gray)">(in progress — watch this space)</em></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Open to Opportunities</div>
+  <h2 class="section-title">Let's build something<br>worth remembering.</h2>
+  <div class="contact-script">Let's connect</div>
+  <p class="contact-tagline">Looking for roles where culture and commerce collide — Brand, Strategy, Content, Social, Growth, or Lifecycle. The quirkier the brief, the better.</p>
+  <div class="contact-links">
+    <a href="mailto:ysrimanasa02@gmail.com" class="contact-link">✉ &nbsp;ysrimanasa02@gmail.com</a>
+    <a href="https://www.linkedin.com/in/yellapragada-sri-manasa/" target="_blank" class="contact-link">in &nbsp;LinkedIn Profile</a>
+    <a href="tel:+917732028594" class="contact-link">☎ &nbsp;+91 77320 28594</a>
+  </div>
+</section>
+
+<footer>© 2026 Sri Manasa Yellapragada · Marketing Strategist · Hyderabad, India</footer>
+
+<script>
+const revs=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*90)});
+},{threshold:0.1});
+revs.forEach(el=>obs.observe(el));
+const secs=document.querySelectorAll('section[id]');
+const links=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';secs.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id});
+  links.forEach(a=>{const on=a.getAttribute('href')==='#'+cur;a.style.opacity=on?'1':'0.6';a.style.color=on?'#8B0000':''});
+});
+</script>
+</body>
+</html>
